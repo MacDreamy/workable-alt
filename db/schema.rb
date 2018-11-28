@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_28_172904) do
+ActiveRecord::Schema.define(version: 2018_11_28_183637) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,4 +27,15 @@ ActiveRecord::Schema.define(version: 2018_11_28_172904) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "workspaces", force: :cascade do |t|
+    t.string "name"
+    t.boolean "smoke_free"
+    t.float "avg_rating"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_workspaces_on_user_id"
+  end
+
+  add_foreign_key "workspaces", "users"
 end
