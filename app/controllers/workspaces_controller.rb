@@ -1,8 +1,8 @@
 class WorkspacesController < ApplicationController
-  skip_before_action :authenticate_user!, only: :index
+  skip_before_action :authenticate_user!, only: :all
 
   def index
-    @workspaces = Workspace.find_all { |e| e.user_id == params[:id] }
+    @workspaces = Workspace.where(user_id: params[:user_id])
   end
 
   def all
@@ -11,9 +11,5 @@ class WorkspacesController < ApplicationController
 
   def new
     @workspace = Workspace.new
-  end
-
-  def create
-    debugger
   end
 end

@@ -1,7 +1,7 @@
 <h1>Workspace#all</h1>
 <p>Find me in app/views/workspace/all.html.erb</p>
 
-<%= link_to "create New Workspace", new_user_workspace_path %>
+<%= link_to "create New Workspace", new_user_workspace_path(current_user) %>
 
 <% if @workspaces.length > 0 %>
   <% @workspaces.each do |w| %>
