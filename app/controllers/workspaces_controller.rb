@@ -5,8 +5,6 @@ class WorkspacesController < ApplicationController
 
   before_action :locate_workspace, only: [:edit, :update, :show]
 
-  after_action :show_workspace, only: [:create, :update, :destroy]
-
   def index
     @workspaces = Workspace.where(user_id: params[:user_id])
   end
@@ -26,6 +24,8 @@ class WorkspacesController < ApplicationController
     @workspace = Workspace.new(workspace_params)
     @workspace.user = @user
     @workspace.save!
+
+    redirect_to workspace_path(@workspace)
   end
 
   def edit
@@ -58,9 +58,5 @@ class WorkspacesController < ApplicationController
 
   def locate_workspace
     @workspace = Workspace.find(params[:id])
-  end
-
-  def show_workspace
-    redirect_to workspace_path(@workspace)
   end
 end

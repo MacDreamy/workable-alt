@@ -5,8 +5,6 @@ class ReviewsController < ApplicationController
 
   before_action :locate_review, only: [:edit, :update, :destroy]
 
-  after_action :show_workspace_reviews, only: [:create, :update, :destroy]
-
   def index
     @reviews = Review.where(workspace_id: params[:workspace_id])
   end
@@ -19,17 +17,23 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @review.workspace = @workspace
     @review.save!
+
+    redirect_to workspace_reviews_path(@workspace)
   end
 
   def edit
   end
 
   def update
-    @review.update(permited_params)
+    @review.update(review_params)
+
+    redirect_to workspace_reviews_path(@review.workspace)
   end
 
   def destroy
     @review.destroy
+
+    redirect_to workspace_reviews_path(@workspace)
   end
 
   private
@@ -40,15 +44,19 @@ class ReviewsController < ApplicationController
     params.require(:review).permit(:title, :detail, :rating)
   end
 
+  def review_params
+    {
+      title: permited_params[:title],
+      detail: permited_params[:detail],
+      rating: permited_params[:rating].to_i
+    }
+  end
+
   def locate_workspace
     @workspace = Workspace.find(params[:workspace_id])
   end
 
   def locate_review
     @review = Review.find(params[:id])
-  end
-
-  def show_workspace_reviews
-    redirect_to workspace_reviews_path(@workspace)
   end
 end

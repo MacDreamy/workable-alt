@@ -1,4 +1,12 @@
-<h1>Review#edit</h1>
-<p>Find me in app/views/review/edit.html.erb</p>
+<h1>Edit Review for Workspace: <%= @review.workspace.name %></h1>
 
-<%= render 'review_form', workspace: @review.workspace_id, review: @review %>
+<%= simple_form_for @review do |f| %>
+
+  <%= f.input :title %>
+
+  <%= f.input :detail %>
+
+  <%= f.input :rating, as: :select, collection: [1, 2, 3, 4, 5] %>
+
+  <%= f.button :submit %>
+<% end %>
