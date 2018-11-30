@@ -1,0 +1,5 @@
+<h2><%= link_to w.name, workspace_path(w) %></h2>
+<div class="indicators">
+  <div class=<%= w.smoke_free? ? 'smoke_free' : 'allow_smoking' %>></div>
+</div>
+<%= link_to "Edit", edit_workspace_path(w) %>
