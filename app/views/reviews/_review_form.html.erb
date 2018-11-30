@@ -1,0 +1,10 @@
+<%= simple_form_for [workspace, review] do |f| %>
+
+  <%= f.input :title %>
+
+  <%= f.input :detail %>
+
+  <%= f.input :rating, as: :select, collection: [1, 2, 3, 4, 5] %>
+
+  <%= f.button :submit %>
+<% end %>

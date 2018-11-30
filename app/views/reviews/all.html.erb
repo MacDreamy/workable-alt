@@ -1,0 +1,12 @@
+<h1>Review#all</h1>
+<p>Find me in app/views/review/all.html.erb</p>
+
+<%= link_to "create New Review", new_workspace_review_path(@workspace) %>
+
+<% if @reviews.length > 0 %>
+  <% @reviews.each do |review| %>
+    <div class="card review">
+      <%= render 'review_short', w: review %>
+    </div>
+  <% end %>
+<% end %>
