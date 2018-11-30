@@ -64,3 +64,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "devise", "~> 4.5"
 
 gem "simple_form", "~> 4.1"
+
+gem "sprockets", "~> 3.7"

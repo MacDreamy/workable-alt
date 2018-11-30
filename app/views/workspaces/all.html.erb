@@ -4,11 +4,9 @@
 <%= link_to "create New Workspace", new_user_workspace_path(current_user) %>
 
 <% if @workspaces.length > 0 %>
-  <% @workspaces.each do |w| %>
+  <% @workspaces.each do |workspace| %>
     <div class="card workspace">
-      <h2><%= w.name %></h2>
-      <div class=<%= w.smoke_free? ? 'smoke_free' : 'allow-smoking' %>></div>
-      <div class=<%= "rating #{w.rating}" %>></div>
+      <%= render 'workspace_short', w: workspace %>
     </div>
   <% end %>
 <% end %>

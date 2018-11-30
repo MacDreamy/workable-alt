@@ -1,7 +1,8 @@
 <h1>Workspace#new</h1>
 <p>Find me in app/views/workspace/new.html.erb</p>
 
-<%= simple_form_for(@workspace) do |f| %>
+<%= simple_form_for [@user, @workspace] do |f| %>
+
   <%= f.input :name %>
 
   <%= f.input :smoke_free %>
