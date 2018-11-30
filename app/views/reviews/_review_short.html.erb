@@ -1,4 +1,7 @@
-<h2><%= link_to w.title, review_path(w) %></h2>
-<p><%= w.rating %></p>
-<p><%= w.detail %></p>
-<%= link_to "Edit", edit_review_path(w) %>
+<div class="card review"  style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+         url('<%= cl_image_path w.photo %>')">
+  <h2><%= link_to w.title, review_path(w) %></h2>
+  <p><%= w.rating %></p>
+  <p><%= w.detail %></p>
+  <%= link_to "Edit", edit_review_path(w) %>
+</div>

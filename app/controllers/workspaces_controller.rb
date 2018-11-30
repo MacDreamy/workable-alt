@@ -42,13 +42,14 @@ class WorkspacesController < ApplicationController
   # TODO: Access control for new, edit, and destroy
 
   def permited_params
-    params.require(:workspace).permit(:name, :smoke_free)
+    params.require(:workspace).permit(:name, :smoke_free, :photo)
   end
 
   def workspace_params
     {
       name: permited_params[:name],
-      smoke_free: permited_params[:smoke_free] == '1'
+      smoke_free: permited_params[:smoke_free] == '1',
+      photo: permited_params[:photo]
     }
   end
 

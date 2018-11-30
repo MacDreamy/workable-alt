@@ -5,8 +5,6 @@
 
 <% if @workspaces.length > 0 %>
   <% @workspaces.each do |workspace| %>
-    <div class="card workspace">
-      <%= render 'workspace_short', w: workspace %>
-    </div>
+    <%= render 'workspace_short', w: workspace %>
   <% end %>
 <% end %>

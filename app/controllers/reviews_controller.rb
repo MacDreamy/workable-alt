@@ -1,12 +1,15 @@
 class ReviewsController < ApplicationController
-  skip_before_action :authenticate_user!, only: :show
+  skip_before_action :authenticate_user!, only: [:index, :show]
 
   before_action :locate_workspace, only: [:index, :new, :create]
 
-  before_action :locate_review, only: [:edit, :update, :destroy]
+  before_action :locate_review, only: [:show, :edit, :update, :destroy]
 
   def index
     @reviews = Review.where(workspace_id: params[:workspace_id])
+  end
+
+  def show
   end
 
   def new
@@ -41,14 +44,15 @@ class ReviewsController < ApplicationController
   # TODO: Access control for edit, and destroy
 
   def permited_params
-    params.require(:review).permit(:title, :detail, :rating)
+    params.require(:review).permit(:title, :detail, :rating, :photo)
   end
 
   def review_params
     {
       title: permited_params[:title],
       detail: permited_params[:detail],
-      rating: permited_params[:rating].to_i
+      rating: permited_params[:rating].to_i,
+      photo: permited_params[:photo]
     }
   end
 

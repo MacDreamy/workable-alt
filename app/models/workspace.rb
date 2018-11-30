@@ -3,6 +3,8 @@ class Workspace < ApplicationRecord
 
   has_many :reviews
 
+  mount_uploader :photo, PhotoUploader
+
   def smoke_free?
     smoke_free
   end

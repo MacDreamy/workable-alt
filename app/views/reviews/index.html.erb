@@ -4,8 +4,6 @@
 
 <% if @reviews.length > 0 %>
   <% @reviews.each do |review| %>
-    <div class="card review">
-      <%= render 'review_short', w: review %>
-    </div>
+    <%= render 'review_short', w: review %>
   <% end %>
 <% end %>

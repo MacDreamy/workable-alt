@@ -1,5 +1,8 @@
 <div class="review">
-  <h1>Review#show</h1>
+  <h1>Review for <%= link_to @review.workspace.name, workspace_path(@review.workspace) %></h1>
   <p>Find me in app/views/review/show.html.erb</p>
-  <%= render 'review_short', w: review %>
+  <h2><%= link_to @review.title, review_path(@review) %></h2>
+  <p><%= @review.rating %></p>
+  <p><%= @review.detail %></p>
+  <%= link_to "Edit", edit_review_path(@review) %>
 </div>
